@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mess · Emotion Archive</title>
+<meta name="description" content="Mess by Bonny, part of Emotion Archive.">
+<link rel="canonical" href="https://emotionarchive.org/archive/mess">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:site_name" content="Emotion Archive">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mess · Emotion Archive">
+<meta property="og:description" content="Mess by Bonny, part of Emotion Archive.">
+<meta property="og:url" content="https://emotionarchive.org/archive/mess">
+<meta property="og:image" content="https://emotionarchive.org/assets/archive/39638014f9.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mess · Emotion Archive">
+<meta name="twitter:description" content="Mess by Bonny, part of Emotion Archive.">
+<meta name="twitter:image" content="https://emotionarchive.org/assets/archive/39638014f9.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Questrial&family=Noto+Sans:wght@400;500&display=swap">
+<style>
+/* Layout: white gallery wall — one 870px column, black rule-and-heading page openers, square artwork grid */
+:root{
+  --bg:#ffffff;
+  --ink:#111111;
+  --text:#2a2a2a;
+  --muted:#6b6b6b;
+  --line:#e7e7e7;
+  --soft:#f5f5f4;
+  --accent:#2f3fbf;
+  --f-ui:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-display:"Questrial",system-ui,sans-serif;
+  --f-sub:"Noto Sans",system-ui,sans-serif;
+  --wrap:870px;
+  --head:56px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--f-ui);font-size:13px;line-height:1.6;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:var(--wrap);margin:0 auto}
+
+/* Header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg)}
+.site-head .wrap{height:var(--head);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--f-display);font-size:16px;color:var(--ink);text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.head-right{display:flex;align-items:center;gap:22px}
+.nav{display:flex;gap:18px}
+.nav a{font-size:13px;font-weight:500;color:var(--ink);text-decoration:none;text-transform:uppercase;letter-spacing:.02em}
+.slide-underline{position:relative;display:inline-block;cursor:pointer;padding-bottom:2px}
+.slide-underline::after{content:'';position:absolute;width:100%;transform:scaleX(0);height:1px;bottom:0;left:0;background-color:#111111;transform-origin:bottom right;transition:transform .2s ease-out}
+.slide-underline:hover::after,.slide-underline[aria-current="page"]::after{transform:scaleX(1);transform-origin:bottom left}
+.burger{display:none;width:40px;height:40px;border:0;background:none;cursor:pointer;padding:0;align-items:center;justify-content:center}
+.burger span{display:block;width:20px;height:1.5px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:1.5px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+
+/* Mobile menu */
+.mmenu{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overflow-y:auto}
+.mmenu-top{height:64px;display:flex;align-items:center;justify-content:space-between}
+.mclose{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mclose svg{width:16px;height:16px}
+.mlinks{margin-top:8px!important}
+.mlinks{list-style:none;margin:0;padding:0}
+.mlinks a{display:flex;align-items:center;justify-content:space-between;padding:20px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-size:22px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.mlinks li:first-child a{border-top:1px solid var(--line)}
+.mlinks svg{width:20px;height:20px;flex:none}
+
+/* Page heading */
+main{flex:1 0 auto}
+.site-foot{flex-shrink:0}
+.page{padding-block:40px 96px}
+.ph{margin:0 0 30px}
+.ph::before{content:"";display:block;width:175px;max-width:40%;height:3px;background:var(--ink);margin-bottom:18px}
+.ph h1,.ph h2{margin:0;font-size:27px;line-height:1.2;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.005em;text-wrap:balance}
+.ph + .ph,.section + .section{margin-top:72px}
+
+/* Home hero */
+.hero{position:relative;height:calc(100svh - var(--head) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:440px;background:#a7adb1 center/cover no-repeat;display:flex;align-items:flex-end}
+.hero-copy{padding-block:0 52px;width:100%}
+.hero h1{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(32px,4.4vw,48px);line-height:1.12;color:#151515;letter-spacing:-2px;text-wrap:balance}
+.hero p{margin:12px 0 0;font-family:var(--f-display);font-weight:500;font-size:clamp(22px,3.2vw,36px);line-height:1.2;color:#1d1d1d}
+.hero .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 22px;background:var(--ink);color:var(--bg);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);cursor:pointer}
+.btn:hover{background:#333;border-color:#333}
+.btn.ghost{background:transparent;color:#151515;border-color:#151515}
+.btn.ghost:hover{background:rgba(255,255,255,.35)}
+
+/* About */
+.about-body{max-width:560px;margin:0 auto;text-align:center;display:grid;gap:18px;font-size:13.5px}
+.about-body p{margin:0}
+.about-illo{margin:0 auto 14px}
+.about-illo.sit{width:220px}
+.about-illo.lie{width:220px;margin-top:40px}
+.team{text-align:center;max-width:560px;margin:0 auto;display:grid;gap:16px;font-size:13.5px}
+.team img{width:128px;height:128px;border-radius:50%;margin:0 auto;object-fit:cover}
+.team h3{margin:6px 0 0;font-size:20px;font-weight:600;color:var(--ink)}
+.team .role{margin:-8px 0 8px;color:var(--accent);font-size:13px}
+.team p{margin:0}
+.team strong{color:var(--ink)}
+
+/* Archive grid */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:-8px 0 26px}
+.search{flex:1 1 240px;max-width:320px;height:38px;border:1px solid var(--line);padding:0 12px;font:inherit;font-size:13px;background:var(--bg);color:var(--ink);border-radius:0}
+.search:focus{outline:none;border-color:var(--ink)}
+.count{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 14px}
+.card{text-decoration:none;display:block;min-width:0}
+.card .ph-img{aspect-ratio:1/1;background:var(--soft);overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card h3{margin:20px 0 4px;font-size:13px;font-weight:700;color:var(--ink);line-height:1.35}
+.card .by{font-size:11.5px;color:var(--muted)}
+.more{display:flex;justify-content:center;margin-top:48px}
+.empty{padding:40px 0;color:var(--muted)}
+
+/* Artwork detail */
+.back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ink);margin-bottom:28px}
+.back svg{width:14px;height:14px}
+.work{display:flex;flex-direction:column;align-items:center;gap:30px}
+.work-info{width:100%;max-width:560px;display:flex;flex-direction:column}
+.work-head{text-align:center}
+.work-img{max-width:490px;width:100%}
+.work-img img{width:100%;height:auto;max-height:78vh;object-fit:contain;margin:0 auto}
+.work h1{margin:0;font-size:26px;line-height:1.25;font-weight:700;color:var(--ink);text-wrap:balance}
+.work .artist{margin:8px 0 0;font-size:13px;color:#444}
+.facts{margin:24px 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.facts div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.facts dt{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:10.5px;padding-top:2px}
+.facts dd{margin:0;color:var(--ink)}
+.prose{margin-top:24px;display:grid;gap:14px;font-size:13.5px;line-height:1.75;max-width:62ch}
+.prose p{margin:0}
+.pager{display:flex;justify-content:space-between;gap:16px;margin-top:64px;padding-top:22px;border-top:1px solid var(--line)}
+.pager a{text-decoration:none;max-width:48%;min-width:0}
+.pager small{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pager span{display:block;font-weight:600;color:var(--ink);font-size:13px;overflow-wrap:anywhere}
+.pager .next{text-align:right;margin-left:auto}
+
+/* Submit */
+.submit{max-width:560px;margin:0 auto}
+.submit figure{margin:0}
+.submit figcaption{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+.submit .intro{margin-top:30px;display:grid;gap:16px;font-size:13px}
+.submit p{margin:0}
+.ilist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ilist li{display:flex;align-items:center;gap:10px}
+.ilist svg{width:16px;height:16px;flex:none}
+.submit h4{margin:20px 0 0;font-size:13px;font-weight:700;color:var(--ink)}
+.submit .btn{width:100%;margin-top:30px;text-transform:none;letter-spacing:.02em;font-weight:500;font-size:13px;height:32px}
+
+/* Reports */
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 14px}
+.rcard{text-decoration:none;display:block;min-width:0}
+.rcard .ph-img{aspect-ratio:1/1;overflow:hidden;background:var(--soft)}
+.rcard img{width:100%;height:100%;object-fit:cover;object-position:left center}
+.rcard h3{margin:16px 0 8px;font-size:13px;font-weight:700;color:var(--ink);line-height:1.4}
+.rcard p{margin:0;font-size:12px;color:#444;line-height:1.55}
+.rcard .tag{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rcard .tag svg{width:11px;height:11px}
+.rcard:hover h3{text-decoration:underline;text-underline-offset:3px}
+.report{display:grid;gap:64px}
+.rblock{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.rblock.flip .rmedia{order:2}
+.rblock.solo{grid-template-columns:minmax(0,1fr);max-width:640px}
+.rblock.solo.right{margin-left:auto}
+.rmedia{background:var(--soft);display:flex;align-items:center;justify-content:center}
+.rmedia img{width:100%;height:auto}
+.rmedia.svg{background:none;padding:20px}
+.rmedia.svg img{max-width:220px}
+.rtext{font-size:13.5px;line-height:1.75;min-width:0}
+.rtext p{margin:0 0 12px}
+.rtext .s6{font-size:30px;line-height:1.2;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.rtext .s5{font-size:20px;line-height:1.3;font-weight:700;color:var(--ink)}
+.rtext .al-right{text-align:right}
+.rtext b{color:var(--ink)}
+.rlead{max-width:62ch;font-size:13.5px;color:#444;margin:-10px 0 44px}
+
+/* Privacy */
+.legal{display:grid;gap:22px;font-size:12.5px;max-width:860px}
+.legal h3{margin:0 0 2px;font-size:12.5px;font-weight:700;color:var(--ink);text-transform:uppercase}
+.legal p{margin:0}
+
+/* 404 */
+.nf{text-align:left;max-width:520px}
+.nf .big{font-family:var(--f-display);font-size:96px;line-height:1;color:var(--ink);letter-spacing:-.04em;margin:0 0 12px}
+.nf p{font-size:14px;margin:0 0 26px}
+
+/* Footer */
+.site-foot{border-top:1px solid var(--line)}
+.site-foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:26px;font-size:11.5px;color:var(--muted)}
+.site-foot a{text-decoration:none}
+.site-foot a:hover{color:var(--ink)}
+.site-foot nav{display:flex;gap:16px;flex-wrap:wrap}
+
+
+@media (max-width:860px){
+  .nav{display:none}
+  .burger{display:inline-flex}
+  .grid,.rgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 12px}
+  .rblock{grid-template-columns:minmax(0,1fr);gap:22px}
+  .rblock.flip .rmedia{order:0}
+  .rtext .s6{font-size:24px}
+}
+@media (max-width:480px){
+  .page{padding-block:28px 72px}
+  .ph h1,.ph h2{font-size:23px}
+  .card h3{margin-top:12px;font-size:12.5px}
+  .hero-copy{padding-bottom:36px}
+  .facts div{grid-template-columns:80px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<header class="site-head gutter">
+  <div class="wrap">
+    <a class="logo" href="/" data-link>Emotion Archive</a>
+    <div class="head-right">
+      <nav class="nav" aria-label="Main" id="nav"></nav>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu gutter" id="mmenu" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top">
+    <a class="logo" href="/" data-link>Emotion Archive</a>
+    <button class="mclose" id="mclose" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <ul class="mlinks" id="mlinks"></ul>
+</div>
+
+<main id="app"></main>
+
+<footer class="site-foot gutter">
+  <div class="wrap">
+    <span id="copy">© 2026 Emotion Archive</span>
+    <nav id="footnav" aria-label="Footer"></nav>
+  </div>
+</footer>
+
+<script src="/assets/data.js"></script>
+<script>
+(function(){
+"use strict";
+const DATA = window.EA_DATA || JSON.parse(document.getElementById('ea-data').textContent);
+const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSe8cbPiX9PVKfASZPF0moMEFslLbon1VoL6gdYxnN8O2kkTCg/viewform";
+
+/* Clean-URL routing on a real host (GitHub Pages: 404.html serves this same app).
+   Inside a preview frame the URL is left alone and routing stays in memory. */
+const PREVIEW = location.protocol === 'file:' || location.protocol === 'blob:' ||
+  /claude|anthropic|usercontent|localhost-preview/.test(location.hostname);
+const BASE = PREVIEW ? '' : '/';
+const asset = p => p ? (/^https?:/.test(p) ? p : BASE + p) : '';
+
+const T = {
+  en:{
+    nav:{home:'Home',about:'About',archive:'Archive',submit:'Submit',reports:'Reports',privacy:'Privacy'},
+    heroTitle:'Emotion Archive: When Feelings Becomes Art',
+    heroSub:'The first creativity project designed for all',
+    exploreArchive:'Explore the archive', shareYours:'Share your story',
+    about:'About', team:'Our Team',
+    aboutP1:['Emotion Archive is a space dedicated to what is left unspoken.','It collects emotions — not as data, but as expressions.','Through writing, art and other forms of creative work, we invite individuals to transform internal experiences into something visible.'],
+    aboutP2:['This project is not about perfection or explanation; it is about presence.','Some emotions cannot be fully understood. But they can be seen, shared, and remembered.','Emotion Archive exists to hold those moments.'],
+    founderName:'Seongwon (Sharon) Yoon', founderRole:'Founder & CEO',
+    founder:['I am a high school student attending an international school in South Korea.','I started this project because I wanted to create a platform where emotions could be expressed through various forms of art and media, including visual art, writing, videos and many more.'],
+    why:'Why does it matter?',
+    founder2:['I found out that nowadays, mental health concerns are increasing, yet mechanisms for expression and exchange remain limited.','Therefore, I decided to initiate ‘Emotion Archive,’ which establishes a platform for documenting experiences through visual forms such as but not limited to photography, visual art, video etc.','This project allows people to display their own forms of art on a visual gallery and express their emotions. In Emotion Archive, these feelings can remain and exist as art.'],
+    archives:'Archives', search:'Search by title or artist', works:n=>n+' works', showMore:'Show more', noResults:'No works match that search.',
+    back:'Back to archive', prev:'Previous', next:'Next', artist:'Artist', profile:'Profile', location:'Location', anonymous:'Anonymous',
+    submissions:'Submissions',
+    caption:'Installation photograph, Justin Watson: PERMADEATH, Utah Museum of Contemporary Art, Jan 26 —Mar 3, 2018, photo © UMOCA',
+    sub1:'Do you want to share your story with us? We are open to submissions. We look forward to hearing your emotions.',
+    sub2:'We welcome submissions in any form of expression, including but not limited to:',
+    forms:['Writing (poetry, short reflections, essays)','Visual art (photography, drawings, digital work)','Mixed media'],
+    sub3:'There is no “correct” way to express emotion.', sub4:'We value authenticity over technique.',
+    guidelines:'Guidelines:', guides:['Submissions must be original work','You may remain anonymous if you choose','Include a title and description'],
+    submitBtn:'Submit',
+    reports:'Reports', readStudy:'Read on Zenodo', readReport:'Read report', backReports:'Back to reports',
+    privacy:'Privacy Policy',
+    nfTitle:'Page not found', nfText:'This page doesn’t exist or may have moved. The archive is still here.', nfBack:'Go to home',
+    rights:'© 2026 Emotion Archive'
+  }
+};
+
+const PRIVACY = {
+  en:{intro:"We value your privacy and as such we are committed to supporting the 'National Privacy Principles for the Fair Handling of Personal Information.",
+  sections:[
+   ['What is personal information?',['Personal information is defined in the Privacy Act 1988 as "information or an opinion in any form about an individual whose identity is apparent or can reasonably be ascertained from the information or opinion".']],
+   ['How we collect your personal information?',['Due to the nature of our business, at times it is necessary to obtain personal information; in order for us to provide you with services. An example would be collecting your address & telephone number for the purpose of a delivery, refund, gift voucher or credit.','Generally, the only personal information we collect about you is that which you choose to tell us. This may be when you contact us, write to us, apply for a service or make a payment.','Australian Privacy law requires us to collect your Personal information directly from you, if it is reasonable and practical to do so.','We will only ask for and use personal information we reasonably need to conduct our business.']],
+   ['Sensitive information',['We do not collect sensitive information about you unless required by applicable laws or rules. Sensitive Information is defined in the Act as information or an opinion about an individual; some examples of these are racial or ethnic origin, political opinion and sexual preferences.','We will not be intrusive nor obtain or use information in an inappropriate manner.']],
+   ['What if you receive promotional material?',['If you receive promotional material and do not wish to receive it, let us know and we will not send it to you.']],
+   ['Are you obligated to provide personal information?',['Generally you have no obligation to provide any information requested by us.','If you choose to withhold requested information, we may not be able to provide you with the services you require should that depend on the collection of that information, particularly if the collection of that information is required by law.']],
+   ['How secure is your personal information?',['We take all reasonable steps to maintain the security and integrity of your personal information.','We store your information in both electronic and paper form. We take all reasonable precautions to protect these records from misuse or unauthorised access.']],
+   ['How to gain access to your personal information?',['We will provide you with access to any of your personal information that is held by us; except in the limited circumstances recognised and permitted by law.']],
+   ['Resolving your privacy issues',['Access complaints or requests to change personal information must be sent to us via email, we will review the request and resolve it within a reasonable time.']]
+  ]}
+};
+
+const ROUTES = ['home','about','archive','submit','reports','privacy'];
+const PATH = {home:'/',about:'/about',archive:'/archive',submit:'/submit',reports:'/reports',privacy:'/privacy'};
+
+let lang = 'en';
+let current = '/';
+let shown = 24;
+let query = '';
+
+const $ = s => document.querySelector(s);
+const app = $('#app');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const paras = s => String(s||'').split(/\n\s*\n|\n/).map(x=>x.trim()).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join('');
+const t = () => T[lang];
+const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const backArrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+const ext = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg>';
+const pencil = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20l1.2-4.6L15.8 4.8a2 2 0 012.8 0l.6.6a2 2 0 010 2.8L8.6 18.8 4 20z"/><path d="M14 6.5l3.5 3.5M5.2 15.4l3.4 3.4"/></svg>';
+const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.2l2.7 2.7L16 9.6"/></svg>';
+
+function heading(text, tag='h1'){ return `<div class="ph"><${tag}>${esc(text)}</${tag}></div>`; }
+function authorName(a){ return a; }
+
+/* ---------- views ---------- */
+function vHome(){
+  return `<section class="hero" style="background-image:url('${asset('assets/img/hero-texture.webp')}')">
+    <div class="hero-copy gutter"><div>
+      <h1>${esc(t().heroTitle)}</h1>
+      <p>${esc(t().heroSub)}</p>
+      <div class="cta-row">
+        <a class="btn" href="/archive" data-link>${esc(t().exploreArchive)}</a>
+        <a class="btn ghost" href="/submit" data-link>${esc(t().shareYours)}</a>
+      </div>
+    </div></div>
+  </section>`;
+}
+function vAbout(){
+  const x=t();
+  return `<div class="page gutter"><div class="wrap">
+    <section class="section">
+      ${heading(x.about)}
+      <img class="about-illo sit" src="${asset('assets/img/about-sitting.webp')}" alt="Line drawing of a girl sitting with her knees pulled in, a tangled scribble in a speech bubble beside her" width="384" height="473">
+      <div class="about-body">${x.aboutP1.map(p=>`<p>${esc(p)}</p>`).join('')}</div>
+      <img class="about-illo lie" src="${asset('assets/img/about-lying.webp')}" alt="Line drawing of a figure lying down, head in a tangled scribble against a yellow circle" width="384" height="151">
+      <div class="about-body" style="margin-top:22px">${x.aboutP2.map(p=>`<p>${esc(p)}</p>`).join('')}</div>
+    </section>
+    <section class="section">
+      ${heading(x.team,'h2')}
+      <div class="team">
+        <img src="${asset('assets/img/founder.webp')}" alt="Portrait of ${esc(x.founderName)}" width="256" height="256">
+        <h3>${esc(x.founderName)}</h3>
+        <p class="role">${esc(x.founderRole)}</p>
+        ${x.founder.map(p=>`<p>${esc(p)}</p>`).join('')}
+        <p><strong>${esc(x.why)}</strong></p>
+        ${x.founder2.map(p=>`<p>${esc(p)}</p>`).join('')}
+      </div>
+    </section>
+  </div></div>`;
+}
+function filtered(){
+  const q=query.trim().toLowerCase();
+  if(!q) return DATA.items;
+  return DATA.items.filter(i => (i.title+' '+i.author).toLowerCase().includes(q));
+}
+function cardsHTML(list){
+  return list.map(i=>`<a class="card" href="/archive/${i.slug}" data-link>
+    <div class="ph-img"><img src="${asset(i.img)}" alt="${esc(i.title)} by ${esc(i.author)}" loading="lazy" decoding="async"></div>
+    <h3>${esc(i.title)}</h3><div class="by">${esc(authorName(i.author))}</div></a>`).join('');
+}
+function vArchive(){
+  const x=t(), list=filtered(), vis=list.slice(0,shown);
+  return `<div class="page gutter"><div class="wrap">
+    ${heading(x.archives)}
+    <div class="grid" id="grid">${vis.length?cardsHTML(vis):''}</div>
+    ${vis.length?'':`<p class="empty">${esc(x.noResults)}</p>`}
+    <div class="more" id="more" ${list.length>shown?'':'hidden'}><button class="btn ghost" id="moreBtn" type="button">${esc(x.showMore)}</button></div>
+  </div></div>`;
+}
+function vWork(slug){
+  const idx = DATA.items.findIndex(i=>i.slug===slug);
+  if(idx<0) return null;
+  const i=DATA.items[idx], x=t();
+  const prev=DATA.items[idx-1], next=DATA.items[idx+1];
+  const metaParts = i.meta ? i.meta.split('|').map(s=>s.trim()).filter(Boolean) : [];
+  const facts = [];
+  if(metaParts.length) facts.push([x.profile, metaParts.join(' · ')]);
+  if(i.location) facts.push([x.location, i.location]);
+  return `<div class="page gutter"><div class="wrap">
+    <a class="back" href="/archive" data-link>${backArrow}${esc(x.back)}</a>
+    <article class="work">
+      <div class="work-img"><img src="${asset(i.img)}" alt="${esc(i.title)} by ${esc(i.author)}"></div>
+      <div class="work-info">
+        <div class="work-head"><h1>${esc(i.title)}</h1><p class="artist">${esc(authorName(i.author))}</p></div>
+        ${facts.length?`<dl class="facts">${facts.map(f=>`<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join('')}</dl>`:''}
+        ${i.content?`<div class="prose">${paras(i.content)}</div>`:''}
+        ${i.info?`<div class="prose">${paras(i.info)}</div>`:''}
+        ${i.qa?`<div class="prose">${paras(i.qa)}</div>`:''}
+      </div>
+    </article>
+    <nav class="pager" aria-label="More works">
+      ${prev?`<a href="/archive/${prev.slug}" data-link><small>← ${esc(x.prev)}</small><span>${esc(prev.title)}</span></a>`:'<span></span>'}
+      ${next?`<a class="next" href="/archive/${next.slug}" data-link><small>${esc(x.next)} →</small><span>${esc(next.title)}</span></a>`:''}
+    </nav>
+  </div></div>`;
+}
+function vSubmit(){
+  const x=t();
+  return `<div class="page gutter"><div class="wrap">
+    ${heading(x.submissions)}
+    <div class="submit">
+      <figure>
+        <img src="${asset('assets/img/submit-installation.webp')}" alt="A room crowded with floral wallpaper, framed pictures, lamps and vases, with a mirrored geometric figure standing among them" width="1024" height="682">
+        <figcaption>${esc(x.caption)}</figcaption>
+      </figure>
+      <div class="intro">
+        <p>${esc(x.sub1)}</p>
+        <p>${esc(x.sub2)}</p>
+        <ul class="ilist">${x.forms.map(f=>`<li>${pencil}<span>${esc(f)}</span></li>`).join('')}</ul>
+        <p style="margin-top:12px">${esc(x.sub3)}</p>
+        <p>${esc(x.sub4)}</p>
+        <h4>${esc(x.guidelines)}</h4>
+        <ul class="ilist">${x.guides.map(f=>`<li>${check}<span>${esc(f)}</span></li>`).join('')}</ul>
+      </div>
+      <a class="btn" href="${FORM}" target="_blank" rel="noopener">${esc(x.submitBtn)}</a>
+    </div>
+  </div></div>`;
+}
+function vReports(){
+  const x=t();
+  return `<div class="page gutter"><div class="wrap">
+    ${heading(x.reports)}
+    <div class="rgrid">${DATA.reports.map(r=>{
+      const href = r.url ? r.url : '/reports/'+r.slug;
+      const attrs = r.url ? 'target="_blank" rel="noopener"' : 'data-link';
+      return `<a class="rcard" href="${esc(href)}" ${attrs}>
+        <div class="ph-img"><img src="${asset(r.thumb)}" alt="" loading="lazy"></div>
+        <h3>${esc(r.title)}</h3>
+        <p>${esc(r.desc)}</p>
+        <span class="tag">${r.url?ext:''}${esc(r.url?x.readStudy:x.readReport)}</span>
+      </a>`;}).join('')}</div>
+  </div></div>`;
+}
+/* Bubble BBCode -> HTML: [b], [i], [size=N], [right], [center] */
+function bb(src){
+  let h = esc(src);
+  h = h.replace(/\[right\]([\s\S]*?)\[\/right\]/g,'<div class="al-right">$1</div>')
+       .replace(/\[center\]([\s\S]*?)\[\/center\]/g,'<div style="text-align:center">$1</div>')
+       .replace(/\[size=(\d)\]([\s\S]*?)\[\/size\]/g,(m,n,inner)=>`<span class="s${n>=6?6:5}">${inner}</span>`)
+       .replace(/\[b\]([\s\S]*?)\[\/b\]/g,'<b>$1</b>')
+       .replace(/\[i\]([\s\S]*?)\[\/i\]/g,'<i>$1</i>');
+  return h.split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean).map(p=>`<p>${p.replace(/\n/g,'<br>')}</p>`).join('');
+}
+function vReport(slug){
+  const r = DATA.reports.find(r=>r.slug===slug && !r.url);
+  if(!r) return null;
+  const x=t(); let side=0;
+  const blocks = r.blocks.map(b=>{
+    const right = /^\s*\[right\]/.test(b.c);
+    if(!b.img) return `<section class="rblock solo ${right?'right':''}"><div class="rtext">${bb(b.c)}</div></section>`;
+    const flip = (side++)%2===1;
+    const isSvg = /\.svg$/.test(b.img);
+    return `<section class="rblock ${flip?'flip':''}">
+      <div class="rmedia ${isSvg?'svg':''}"><img src="${asset(b.img)}" alt="" loading="lazy"></div>
+      <div class="rtext">${bb(b.c)}</div></section>`;
+  }).join('');
+  return `<div class="page gutter"><div class="wrap">
+    <a class="back" href="/reports" data-link>${backArrow}${esc(x.backReports)}</a>
+    ${heading(r.title)}
+    <p class="rlead">${esc(r.desc.replace(/\.\.\.$/,'.'))}</p>
+    <div class="report">${blocks}</div>
+  </div></div>`;
+}
+function vPrivacy(){
+  const x=t(), p=PRIVACY[lang];
+  return `<div class="page gutter"><div class="wrap">
+    ${heading(x.privacy)}
+    <div class="legal">
+      <p>${esc(p.intro)}</p>
+      ${p.sections.map(s=>`<section><h3>${esc(s[0])}</h3>${s[1].map(l=>`<p>${esc(l)}</p>`).join('')}</section>`).join('')}
+    </div>
+  </div></div>`;
+}
+function v404(){
+  const x=t();
+  return `<div class="page gutter"><div class="wrap"><div class="nf">
+    <p class="big">404</p>
+    ${heading(x.nfTitle)}
+    <p>${esc(x.nfText)}</p>
+    <a class="btn" href="/" data-link>${esc(x.nfBack)}</a>
+  </div></div></div>`;
+}
+
+/* ---------- chrome ---------- */
+function renderChrome(){
+  const x=t(), key=routeKey(current);
+  document.documentElement.lang = lang;
+  $('#nav').innerHTML = ROUTES.map(r=>`<a class="slide-underline" href="${PATH[r]}" data-link ${key===r?'aria-current="page"':''}>${esc(x.nav[r])}</a>`).join('');
+  $('#mlinks').innerHTML = ROUTES.map(r=>`<li><a href="${PATH[r]}" data-link ${key===r?'aria-current="page"':''}><span>${esc(x.nav[r])}</span>${arrow}</a></li>`).join('');
+  $('#footnav').innerHTML = ['archive','submit','privacy'].map(r=>`<a href="${PATH[r]}" data-link>${esc(x.nav[r])}</a>`).join('');
+  $('#copy').textContent = x.rights;
+}
+function routeKey(path){
+  const seg = path.replace(/^\/+|\/+$/g,'').split('/')[0] || 'home';
+  return ROUTES.includes(seg) ? seg : null;
+}
+function render(){
+  const parts = current.replace(/^\/+|\/+$/g,'').split('/').filter(Boolean);
+  let html = null, title = 'Emotion Archive';
+  const x=t();
+  if(parts.length===0){ html=vHome(); }
+  else if(parts.length===1){
+    const k=parts[0];
+    if(k==='about'){ html=vAbout(); title=x.nav.about+' · Emotion Archive'; }
+    else if(k==='archive'){ html=vArchive(); title=x.nav.archive+' · Emotion Archive'; }
+    else if(k==='submit'){ html=vSubmit(); title=x.nav.submit+' · Emotion Archive'; }
+    else if(k==='reports'){ html=vReports(); title=x.nav.reports+' · Emotion Archive'; }
+    else if(k==='privacy'){ html=vPrivacy(); title=x.privacy+' · Emotion Archive'; }
+  } else if(parts.length===2 && parts[0]==='archive'){
+    html=vWork(decodeURIComponent(parts[1]));
+    const it=DATA.items.find(i=>i.slug===parts[1]); if(it) title=it.title+' · Emotion Archive';
+  } else if(parts.length===2 && parts[0]==='reports'){
+    html=vReport(decodeURIComponent(parts[1]));
+    const r=DATA.reports.find(r=>r.slug===parts[1]); if(r) title=r.title+' · Emotion Archive';
+  }
+  if(html===null){ html=v404(); title=x.nfTitle+' · Emotion Archive'; }
+  app.innerHTML = html;
+  document.title = title;
+  document.querySelector('.site-foot').hidden = parts.length===0;
+  renderChrome();
+  bindPage();
+}
+function bindPage(){
+  const mb=$('#moreBtn');
+  if(mb) mb.addEventListener('click',()=>{ shown+=24; updateGrid(); });
+}
+function updateGrid(){
+  const x=t(), list=filtered(), vis=list.slice(0,shown);
+  $('#grid').innerHTML = cardsHTML(vis);
+  $('#more').hidden = list.length<=shown;
+  let e=document.querySelector('.empty');
+  if(!vis.length && !e){ $('#grid').insertAdjacentHTML('afterend',`<p class="empty">${esc(x.noResults)}</p>`); }
+  if(vis.length && e) e.remove();
+}
+function go(path, push=true){
+  if(path !== current && !path.startsWith('/archive')) { query=''; shown=24; }
+  if(path === '/archive' && !current.startsWith('/archive/')) { shown=24; }
+  current = path;
+  if(push && !PREVIEW){ try{ history.pushState({}, '', path); }catch(e){} }
+  closeMenu();
+  render();
+  window.scrollTo(0,0);
+}
+
+/* menu */
+const mm=$('#mmenu'), burger=$('#burger');
+function openMenu(){ mm.hidden=false; burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; $('#mclose').focus(); }
+function closeMenu(){ if(mm.hidden) return; mm.hidden=true; burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+burger.addEventListener('click', openMenu);
+$('#mclose').addEventListener('click', ()=>{ closeMenu(); burger.focus(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
+
+document.addEventListener('click', e=>{
+  const a = e.target.closest('a[data-link]');
+  if(!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button!==0) {
+    if(a && PREVIEW) e.preventDefault();
+    return;
+  }
+  e.preventDefault();
+  go(a.getAttribute('href'));
+});
+window.addEventListener('popstate', ()=>{ if(!PREVIEW){ current = normalize(location.pathname); render(); } });
+
+function normalize(p){
+  p = (p||'/').replace(/\/index\.html$/,'/').replace(/\.html$/,'');
+  if(p.length>1) p = p.replace(/\/+$/,'');
+  return p || '/';
+}
+current = PREVIEW ? '/' : normalize(location.pathname);
+render();
+})();
+</script>
+
+</body>
+</html>
